@@ -1,1 +1,1 @@
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#565f89,bg=#24283b,bold,underline"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,bold,underline"
