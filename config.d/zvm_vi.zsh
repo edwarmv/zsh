@@ -1,10 +1,5 @@
-# gruvbox-material
-# ZVM_VI_HIGHLIGHT_FOREGROUND=#d4be98
-# ZVM_VI_HIGHLIGHT_BACKGROUND=#504945
-
-# tokyonight_storm
-ZVM_VI_HIGHLIGHT_FOREGROUND=#c0caf5
-ZVM_VI_HIGHLIGHT_BACKGROUND=#2e3c64
+ZVM_VI_HIGHLIGHT_FOREGROUND=7
+ZVM_VI_HIGHLIGHT_BACKGROUND=8
 
 # REF https://github.com/junegunn/fzf-git.sh/pull/46/files
 function zvm_after_init() {
