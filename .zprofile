@@ -1,3 +1,5 @@
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/ohmyzsh"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH=":$HOME/.local/bin:$PATH"
 export PATH=":$GOPATH/bin:$PATH"
 export PATH=":$HOME/.dotnet/tools:$PATH"
@@ -11,3 +13,4 @@ export ZSH_TMUX_CONFIG=$HOME/.config/tmux/tmux.conf
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 export VISUAL="nvim"
 export EDITOR="nvim"
+
