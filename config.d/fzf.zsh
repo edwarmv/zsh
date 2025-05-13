@@ -7,7 +7,6 @@ export FZF_DEFAULT_OPTS="
   --ansi \
   --border=none
   --color=bg+:8 \
-  --color=bg:0 \
   --color=border:8 \
   --color=fg:8 \
   --color=fg+:15 \
