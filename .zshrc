@@ -9,4 +9,9 @@ source $ZDOTDIR/.antidote/antidote.zsh
 
 antidote load
 
+if [[ -z "$NVIM" ]]; then
+  # Only run this if not in Neovim terminal
+  antidote load ${ZDOTDIR}/.zsh_plugins_asdf.txt
+fi
+
 eval "$(starship init zsh)"
