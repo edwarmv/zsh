@@ -59,51 +59,18 @@ zvm_after_lazy_keybindings() {
 eval "$(/opt/homebrew/bin/brew shellenv)"
 . "$HOME/.cargo/env"
 
+# Clone antidote if necessary.
+if [[ ! -d ${ZDOTDIR:-$HOME}/.antidote ]]; then
+  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-$HOME}/.antidote
+fi
+
+# Create an amazing Zsh config using antidote plugins.
+source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
+antidote load
+
 if [[ -z "$NVIM" ]]; then
   # Only run this if not in Neovim terminal
-  # antidote load ${ZDOTDIR}/.zsh_plugins_asdf.txt
+  antidote load ${ZDOTDIR}/.zsh_plugins_asdf.txt
 fi
 
 source $(brew --prefix)/opt/spaceship/spaceship.zsh
-
-### Added by Zinit's installer
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
-fi
-
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
-
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
-zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
-zinit snippet OMZ::plugins/python/python.plugin.zsh
-zinit snippet OMZ::plugins/podman/podman.plugin.zsh
-zinit snippet OMZ::plugins/docker/docker.plugin.zsh
-zinit snippet OMZ::plugins/docker-compose/docker-compose.plugin.zsh
-zinit snippet OMZ::plugins/zoxide/zoxide.plugin.zsh
-zinit snippet OMZ::plugins/eza/eza.plugin.zsh
-zinit snippet OMZ::plugins/asdf/asdf.plugin.zsh
-
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light junegunn/fzf-git.sh
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
-zinit ice as"program" pick"bin/git-fuzzy"; zinit light bigH/git-fuzzy
-
-
-### End of Zinit's installer chunk
