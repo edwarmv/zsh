@@ -1,3 +1,12 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+zstyle ':plugin:ez-compinit' 'compstyle' 'ohmy'
+
 # export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 alias grep="rg"
 alias fv=".fvm/flutter_sdk/bin/flutter"
@@ -56,6 +65,14 @@ zvm_after_lazy_keybindings() {
   done
 }
 
+# Bind M-enter
+bindkey '^[^M' autosuggest-execute
+
+zstyle ':omz:plugins:eza' 'git-status' yes
+zstyle ':omz:plugins:eza' 'icons' yes
+zstyle ':omz:plugins:eza' 'hyperlink' yes
+zstyle ':omz:update' mode disabled
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 . "$HOME/.cargo/env"
 
@@ -68,9 +85,7 @@ fi
 source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
 antidote load
 
-if [[ -z "$NVIM" ]]; then
-  # Only run this if not in Neovim terminal
-  antidote load ${ZDOTDIR}/.zsh_plugins_asdf.txt
-fi
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
-source $(brew --prefix)/opt/spaceship/spaceship.zsh
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

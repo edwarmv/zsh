@@ -1,3 +1,4 @@
+export GOPATH=$HOME/go
 # use the updadated version of grep from homebrew
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
@@ -28,27 +29,11 @@ export FZF_DEFAULT_OPTS="
   --highlight-line \
   --info=inline-right \
   --ansi \
-  --border=none
-  --color=bg+:0 \
-  --color=border:0 \
-  --color=fg:15 \
-  --color=fg+:7 \
-  --color=gutter:0 \
-  --color=header:5 \
-  --color=hl+:6 \
-  --color=hl:5 \
-  --color=info:12 \
-  --color=marker:2 \
-  --color=pointer:4 \
-  --color=prompt:3 \
-  --color=query:7:regular \
-  --color=scrollbar:4 \
-  --color=separator:0 \
-  --color=spinner:1 \
+  --color=16 \
 "
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,bold,underline"
 export ZVM_VI_HIGHLIGHT_FOREGROUND=7
-export ZVM_VI_HIGHLIGHT_BACKGROUND=0
+export ZVM_VI_HIGHLIGHT_BACKGROUND=8
 export ZVM_READKEY_ENGINE=zle
 export ZVM_KEYTIMEOUT=0.5
 export ZOXIDE_CMD_OVERRIDE='cd'
@@ -56,4 +41,3 @@ export ZOXIDE_CMD_OVERRIDE='cd'
 
 export VISUAL="nvim"
 export EDITOR="nvim"
-export PAGER="moor"
